@@ -51,7 +51,7 @@ const Search = () => {
 
   return (
     <Dialog open={isSearch} onClose={searchCloseHandler}>
-      <Stack p={"2rem"} direction={"column"} width={"18rem"} position="relative">
+      <Stack p={"2rem"} direction={"column"} width={"20rem"} position="relative">
         <IconButton
           onClick={searchCloseHandler}
           sx={{ position: "absolute", top: 8, right: 8 }}
