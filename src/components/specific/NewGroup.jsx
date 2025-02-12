@@ -64,7 +64,7 @@ const NewGroup = () => {
   };
   return (
     <Dialog onClose={closeHandler} open={isNewGroup}>
-      <Stack p={{ xs: "1rem", sm: "3rem" }} width={"21rem"} spacing={"2rem"}>
+      <Stack p={{ xs: "1rem", sm: "3rem" }} width={"20rem"} spacing={"2rem"}>
         <DialogTitle textAlign={"center"} variant="h4">
           New Group
         </DialogTitle>
