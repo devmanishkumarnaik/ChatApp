@@ -17,7 +17,8 @@ import {
   Search as SearchIcon,
   Group as GroupIcon,
   Logout as LogoutIcon,
-  Notifications as NotificationsIcon
+  Notifications as NotificationsIcon,
+  Videocam as VideocamIcon
 } from "@mui/icons-material";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
@@ -57,6 +58,9 @@ const Header = () => {
     dispatch(resetNotificationCount());
   };
   const navigateToGroup = () => navigate("/groups");
+  const videocallaction = () => {
+    window.location.href="https://chat-videocall.netlify.app"
+  }
 
   const logoutHandler = async () => {
     try {
@@ -85,7 +89,7 @@ const Header = () => {
                 display: { xs: "none", sm: "block" },
               }}
             >
-              ChatApp2.0
+              Dashboard
             </Typography>
 
             <Box
@@ -128,6 +132,12 @@ const Header = () => {
                 icon={<NotificationsIcon />}
                 onClick={openNotification}
                 value={notificationCount}
+              />
+
+              <IconBtn
+                title={"Videocall"}
+                icon={<VideocamIcon />}
+                onClick={videocallaction}
               />
 
               <IconBtn

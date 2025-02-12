@@ -6,9 +6,10 @@ import {
   List,
   Stack,
   TextField,
+  IconButton
 } from "@mui/material";
 import { useInputValidation } from "6pp";
-import { Search as SearchIcon } from "@mui/icons-material";
+import { Search as SearchIcon, Close as CloseIcon } from "@mui/icons-material";
 import UserItem from "../shared/UserItem";
 import { useDispatch, useSelector } from "react-redux";
 import { setIsSearch } from "../../redux/reducers/misc";
@@ -16,37 +17,47 @@ import { useLazySearchUserQuery, useSendFriendRequestMutation } from "../../redu
 import { useAsyncMutation } from "../../hooks/hook";
 
 const Search = () => {
-  const {isSearch} = useSelector(state=>state.misc)
+  const { isSearch } = useSelector(state => state.misc);
+  const { user } = useSelector(state => state.auth); // Get logged-in user data
 
   const [searchUser] = useLazySearchUserQuery();
-  const [sendFriendRequest,isLoadingSendFriendRequest] = useAsyncMutation(useSendFriendRequestMutation);
+  const [sendFriendRequest, isLoadingSendFriendRequest] = useAsyncMutation(useSendFriendRequestMutation);
 
   const dispatch = useDispatch();
-
   const search = useInputValidation("");
-
   const [users, setUsers] = useState([]);
 
-  const addFriendHandler = async (id)=>{
+  const addFriendHandler = async (id) => {
     await sendFriendRequest("Sending friend request...", { userId: id });
-  }
-  const searchCloseHandler = ()=>dispatch(setIsSearch(false));
+  };
+
+  const searchCloseHandler = () => dispatch(setIsSearch(false));
 
   useEffect(() => {
     const timeOutId = setTimeout(() => {
       searchUser(search.value)
-        .then(({ data }) => setUsers(data.users))
+        .then(({ data }) => {
+          // Filter out the logged-in user
+          const filteredUsers = data.users.filter(u => u._id !== user._id);
+          setUsers(filteredUsers);
+        })
         .catch((e) => console.log(e));
     }, 1000);
 
     return () => {
       clearTimeout(timeOutId);
     };
-  }, [search.value]);
+  }, [search.value, searchUser, user]);
 
   return (
     <Dialog open={isSearch} onClose={searchCloseHandler}>
-      <Stack p={"2rem"} direction={"column"} width={"25rem"}>
+      <Stack p={"2rem"} direction={"column"} width={"21rem"} position="relative">
+        <IconButton
+          onClick={searchCloseHandler}
+          sx={{ position: "absolute", top: 8, right: 8 }}
+        >
+          <CloseIcon />
+        </IconButton>
         <DialogTitle textAlign={"center"}>Find People</DialogTitle>
         <TextField
           label=""
@@ -60,8 +71,8 @@ const Search = () => {
                 <SearchIcon />
               </InputAdornment>
             ),
-          }}/>
-        
+          }}
+        />
 
         <List>
           {users.map((i) => (
@@ -72,9 +83,7 @@ const Search = () => {
               handlerIsLoading={isLoadingSendFriendRequest}
             />
           ))}
-         
         </List>
-        
       </Stack>
     </Dialog>
   );

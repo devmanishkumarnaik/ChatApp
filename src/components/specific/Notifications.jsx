@@ -13,6 +13,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useAsyncMutation, useErrors } from "../../hooks/hook";
 import { useAcceptFriendRequestMutation, useGetNotificationsQuery } from "../../redux/api/api";
 import { setIsNotification } from "../../redux/reducers/misc";
+import {transformImage} from "../../lib/features";
 
 const Notifications = () => {
   const dispatch = useDispatch()
@@ -58,7 +59,7 @@ const Notifications = () => {
 };
 
 const NotificationItem = memo(({ sender, _id, handler }) => {
-  const { name } = sender;
+  const { name, avatar } = sender;
   return (
     <ListItem>
       <Stack
@@ -67,7 +68,7 @@ const NotificationItem = memo(({ sender, _id, handler }) => {
         spacing={"1rem"}
         width={"100%"}
       >
-        <Avatar />
+        <Avatar src={transformImage(avatar)}/>
 
         <Typography
           variant="body1"

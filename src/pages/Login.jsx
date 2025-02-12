@@ -26,7 +26,7 @@ const Login = () => {
   const toggleLogin = () => setIsLogin((prev) => !prev);
 
   const name = useInputValidation("");
-  const bio = useInputValidation("");
+  //const bio = useInputValidation("");
   const username = useInputValidation("", usernameValidator);
   const password = useStrongPassword();
 
@@ -77,7 +77,7 @@ const Login = () => {
     formData.append("avatar", avatar.file);
     formData.append("name", name.value);
     formData.append("username", username.value);
-    formData.append("bio", bio.value);
+    //formData.append("bio", bio.value);
     formData.append("password", password.value);
 
     const config = {
@@ -189,13 +189,13 @@ const Login = () => {
                   Sign Up Instead
                 </Button>
 
-                <Typography
+                {/* <Typography
                   textAlign={"center"}
                   fontSize={"14px"}
                   color={"rgba(192,192,192,0.7)"}
                 >
                   Secured By manishinc
-                </Typography>
+                </Typography> */}
               </form>
             </>
           ) : (
@@ -279,7 +279,7 @@ const Login = () => {
                   </Typography>
                 )}
 
-                <TextField
+                {/* <TextField
                   required
                   fullWidth
                   label="Bio"
@@ -287,7 +287,7 @@ const Login = () => {
                   variant="outlined"
                   value={bio.value}
                   onChange={bio.changeHandler}
-                />
+                /> */}
 
                 <TextField
                   required
@@ -326,13 +326,13 @@ const Login = () => {
                 <Button disabled={isLoading} fullWidth variant="text" onClick={toggleLogin}>
                   Login Instead
                 </Button>
-                <Typography
+                {/* <Typography
                   textAlign={"center"}
                   fontSize={"14px"}
                   color={"rgba(192,192,192,0.7)"}
                 >
                   Secured By manishinc
-                </Typography>
+                </Typography> */}
               </form>
             </>
           )}

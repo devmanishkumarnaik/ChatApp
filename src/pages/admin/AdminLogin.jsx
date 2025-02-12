@@ -87,14 +87,14 @@ const AdminLogin = () => {
               Login
             </Button>
 
-            <Typography
+            {/* <Typography
               textAlign={"center"}
               fontSize={"14px"}
               color={"rgba(192,192,192,0.7)"}
               marginTop={"7px"}
             >
               Secured By manishinc
-            </Typography>
+            </Typography> */}
           </form>
         </Paper>
       </Container>

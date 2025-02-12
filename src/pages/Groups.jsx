@@ -396,7 +396,7 @@ const GroupsList = ({ w = "100%", myGroups = [], chatId }) => (
         <GroupListItem group={group} chatId={chatId} key={group._id} />
       ))
     ) : (
-      <Typography textAlign={"center"} padding="1rem">
+      <Typography textAlign={"center"} padding="1rem" style={{color: "white"}}>
         No groups
       </Typography>
     )}

@@ -21,7 +21,7 @@ const Profile = ({ user }) => {
           border: "5px solid white",
         }}
       />
-      <Profilecard heading={"Bio"} text={user?.bio} />
+      {/* <Profilecard heading={"Bio"} text={user?.bio} /> */}
       <Profilecard
         heading={"Username"}
         text={user?.username}

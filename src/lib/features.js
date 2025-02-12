@@ -7,6 +7,8 @@ const fileFormat = (url = "") => {
 
   if (fileExt === "mp3" || fileExt === "wav") return "audio";
 
+  if (fileExt === "pdf") return "pdf";
+
   if (
     fileExt === "png" ||
     fileExt === "jpg" ||
@@ -18,21 +20,22 @@ const fileFormat = (url = "") => {
   return "file";
 };
 
-const transformImage = (url = "", width = 100)=>{
+const transformImage = (url = "", width = 100) => {
   const newUrl = url.replace("upload/", `upload/dpr_auto/w_${width}/`);
   return newUrl;
 };
-const getLast7Days = ()=>{
-   const currentDate = moment();
-   const last7Days = [];
 
-   for(let i=0; i<7; i++){
-     const dayDate = currentDate.clone().subtract(i, "days");
-     const dayName = dayDate.format("dddd");
+const getLast7Days = () => {
+  const currentDate = moment();
+  const last7Days = [];
 
-     last7Days.unshift(dayName);
-   }
-   return last7Days;
+  for (let i = 0; i < 7; i++) {
+    const dayDate = currentDate.clone().subtract(i, "days");
+    const dayName = dayDate.format("dddd");
+
+    last7Days.unshift(dayName);
+  }
+  return last7Days;
 };
 
 const getOrSaveFromStorage = ({ key, value, get }) => {

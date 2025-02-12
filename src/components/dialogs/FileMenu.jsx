@@ -48,7 +48,8 @@ const FileMenu = ({ anchorE1, chatId }) => {
       const res = await sendAttachments(myForm);
 
       if (res.data) toast.success(`${key} sent successfully`, { id: toastId });
-      else toast.error(`Failed to send ${key}`, { id: toastId });
+      //else toast.error(`Send the ${key} within 15 MB`, { id: toastId });
+      else toast.error(`Send file within 15 MB`, { id: toastId });
 
       // Fetching Here
     } catch (error) {
