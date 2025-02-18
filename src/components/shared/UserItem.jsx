@@ -31,7 +31,7 @@ const UserItem = ({ user, handler, handlerIsLoading, isAdded = false, styling = 
         >
           {name}
           {username === "Manish" && (
-            <img style={{ height: "14px", marginLeft: "2px" }} src={checkpic} alt="logo" />
+            <img style={{ height: "14px", marginLeft: "2px", verticalAlign: "middle" }} src={checkpic} alt="logo" />
           )}
         </Typography>
         <IconButton
