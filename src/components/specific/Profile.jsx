@@ -7,6 +7,7 @@ import {
 } from "@mui/icons-material";
 import moment from "moment";
 import { transformImage } from "../../lib/features";
+import checkpic from "/check.png";
 
 const Profile = ({ user }) => {
   return (
@@ -23,8 +24,19 @@ const Profile = ({ user }) => {
       />
       {/* <Profilecard heading={"Bio"} text={user?.bio} /> */}
       <Profilecard
-        heading={"Username"}
-        text={user?.username}
+        heading="Username"
+        text={
+          <>
+            {user?.username}
+            {user?.username === "Manish" && (
+              <img
+                style={{ height: "14px", marginLeft: "3px" }}
+                src={checkpic}
+                alt="logo"
+              />
+            )}
+          </>
+        }
         Icon={<UserNameIcon />}
       />
       <Profilecard
