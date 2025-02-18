@@ -3,6 +3,7 @@ import { Link } from "../styles/StyledComponents";
 import { Box, Stack, Typography } from "@mui/material";
 import AvatarCard from "./AvatarCard";
 import {motion} from "framer-motion";
+import checkpic from "/check.png";
 
 const ChatItem = ({
   avatar = [],
@@ -37,7 +38,9 @@ const ChatItem = ({
       >
         <AvatarCard avatar={avatar} />
         <Stack>
-          <Typography>{name}</Typography>
+          <Typography>{name}{name === "Manish" && (
+                      <img style={{ height: "14px", marginLeft: "3px", verticalAlign: "middle" }} src={checkpic} alt="logo" />
+                    )}</Typography>
           {newMessageAlert && (
             <Typography>{newMessageAlert.count} New Message</Typography>
           )}
