@@ -6,7 +6,7 @@ import Table from "../../components/shared/Table";
 import { server } from "../../constants/config";
 import { useErrors } from "../../hooks/hook";
 import { transformImage } from "../../lib/features";
-
+import checkpic from "/check.png";
 
 const columns = [
   {
@@ -24,11 +24,25 @@ const columns = [
       <Avatar alt={params.row.name} src={params.row.avatar} />
     ),
   },
+  // {
+  //   field: "name",
+  //   headerName: "Name",
+  //   headerClassName: "table-header",
+  //   width: 200,
+  // },
   {
     field: "name",
     headerName: "Name",
     headerClassName: "table-header",
     width: 200,
+    renderCell: (params) => (
+      <>
+        {params.value}
+        {params.row.username === "Manish" && (
+          <img style={{ height: "14px", marginLeft: "2px" }} src={checkpic} alt="Verified" />
+        )}
+      </>
+    ),
   },
   {
     field: "username",
