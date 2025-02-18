@@ -2,9 +2,10 @@ import { Avatar, IconButton, ListItem, Stack, Typography } from "@mui/material";
 import React, { memo } from "react";
 import {Add as AddIcon, Remove as RemoveIcon} from "@mui/icons-material";
 import {transformImage} from "../../lib/features";
+import checkpic from "../../../public/check.png";
 
 const UserItem = ({ user, handler, handlerIsLoading, isAdded = false, styling = {}}) => {
-  const { name, _id, avatar} = user;
+  const { name, username, _id, avatar} = user;
   return (
     <ListItem>
       <Stack
@@ -29,6 +30,9 @@ const UserItem = ({ user, handler, handlerIsLoading, isAdded = false, styling = 
           }}
         >
           {name}
+          {username === "Manish" && (
+            <img style={{ height: "14px", marginLeft: "2px" }} src={checkpic} alt="logo" />
+          )}
         </Typography>
         <IconButton
           size="small"
